@@ -13,7 +13,13 @@
             <label>Mot de passe</label>
             <input type="password" name="password"><br><br>
 
-            <button type="submit">Se connecter</button>
+            <button type="submit">Se connecter</button><br><br>
+
+            <p>
+                Pas de compte ?
+                <a href="/Option_B_Mission/public/index.php?page=register" style="test-decoration: underline; color: black;">Inscrivez-vous</a>
+            </p>
+
         </form>
     </body>
 </html>
