@@ -17,3 +17,11 @@ if(isset($_GET['page']) && $_GET['page'] === 'register'){
     $usercontroller = new UserController();
     $usercontroller->show($pdo);
 }
+if(isset($_GET['page']) && $_GET['page'] === 'login'){
+    require_once "../src/controllers/LoginController.php";
+    $loginController = new LoginController();
+    $loginController->showForm();
+    $loginController->login($pdo);
+}else{
+    
+}

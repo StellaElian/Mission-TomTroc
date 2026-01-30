@@ -17,6 +17,11 @@
             <input type="password" name="password"><br><br>
 
             <button type="submit">S'inscrire</button>
+
+            <p>
+                Déja inscrit ?
+                <a href="index.php?page=login" style="test-decoration: underline; color: black;">Connectez-vous</a>
+            </p>
         </form>
     </body>
 </html>
