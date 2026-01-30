@@ -10,6 +10,8 @@
 <?php if ($user !== FAlSE): ?>
     <p>Pseudo : <?= $user['pseudo']; ?></p>
     <p>Email : <?= $user['email']; ?></p>
+<?php else: ?>
+    <p>Aucun utilisateur trouvé .</p>
 <?php endif; ?>
 </body>
 </html>
