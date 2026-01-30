@@ -23,5 +23,7 @@ if(isset($_GET['page']) && $_GET['page'] === 'login'){
     $loginController->showForm();
     $loginController->login($pdo);
 }else{
-    
+    require_once "../src/controllers:UserController.php";
+    $userController = new UserController();
+    $userController->show($pdo);
 }
