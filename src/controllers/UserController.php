@@ -8,4 +8,16 @@ class UserController
         $user = User::getOneUser($pdo);
         require_once '../src/views/user.php'; // car $user existe maintenant 
     }
+
+    public function register($pdo){
+        if(!EMPTY [$_POST]){
+            User::createUser(
+                $pdo,
+                $_POST['pseudo'],
+                $_POST['email'],
+                $_POST['password']
+            );
+            require_once '../src/views/register.php';
+        }
+    }
 }

@@ -8,4 +8,10 @@ class User
         $query = $pdo->query("SELECT pseudo, email FROM users LIMIT 1");
         return $query->fetch();
     }
+    // enregistrer un utilisateur 
+    public static function createUser($pdo, $pseudo, $email, $password){
+        $sql = "INSERT INTO users (pseudo, email, password)
+                VALUES ('pseudo', 'email', 'password')";
+        $pdo->query($sql);
+    }
 }
