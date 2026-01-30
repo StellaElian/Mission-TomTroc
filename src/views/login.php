@@ -5,6 +5,7 @@
         <title>Page de Connexion</title>
     </head>
     <body>
+        <h1>Connexion</h1>
         <form method="POST" action="">
             <label>Pseudo</label>
             <input type="text" name="pseudo"><br><br>
