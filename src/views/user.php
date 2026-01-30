@@ -7,8 +7,10 @@
 <body>
 
 <h1>Utilisateur :</h1>
+<?php
+if ($user === FAlSE) ?>
+    <p>Pseudo :<?= $user['pseudo']; ?></p>
+    <p>Email :<?= $user['email']; ?></p>
 
-<p>Pseudo : <?= $user['pseudo']; ?></p>
-<p>Email : <?= $user['email']; ?></p>
 </body>
 </html>

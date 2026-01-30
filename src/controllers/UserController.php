@@ -10,7 +10,7 @@ class UserController
     }
 
     public function register($pdo){
-        if(!EMPTY [$_POST]){
+        if(!EMPTY($_POST)){
             User::createUser(
                 $pdo,
                 $_POST['pseudo'],
