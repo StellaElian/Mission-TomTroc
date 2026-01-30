@@ -7,10 +7,10 @@
     <body>
         <form method="POST" action="">
             <label>Pseudo</label>
-            <input type="text" name="pseudo">
+            <input type="text" name="pseudo"><br><br>
 
             <label>Mot de passe</label>
-            <input type="password" name="password">
+            <input type="password" name="password"><br><br>
 
             <button type="submit">Se connecter</button>
         </form>
