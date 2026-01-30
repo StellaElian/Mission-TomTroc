@@ -18,7 +18,7 @@ class User
     public static function login($pdo, $pseudo, $password){
         $query = $pdo->query("SELECT * FROM users WHERE pseudo = '$pseudo' LIMIT 1");
         $user = $query->fetch();
-        if($user $$ password_verify($password, $user['password'])){
+        if($user && password_verify($password, $user['password'])){
             return $user;
         }else{
             return false;
