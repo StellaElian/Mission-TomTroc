@@ -13,3 +13,6 @@
             <input type="password" name="password">
 
             <button type="submit">Se connecter</button>
+        </form>
+    </body>
+</html>
