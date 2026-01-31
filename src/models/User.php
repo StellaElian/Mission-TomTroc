@@ -21,8 +21,8 @@ class User
         }
     }
 
-    public static function getOneProfile($pdo){
-        $query = $pdo->query("SELECT pseudo, email FROM users LIMIT 1");
+    public static function getOneProfile(PDO $pdo){
+        $query = $pdo->query("SELECT pseudo, email, created_at FROM users LIMIT 1");
         return $query->fetch();
     }
 }
