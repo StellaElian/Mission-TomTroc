@@ -6,8 +6,8 @@ class User
 {
     // enregistrer un utilisateur 
     public static function createUser($pdo, $pseudo, $email, $password){
-        $sql = "INSERT INTO users (pseudo, email, password)
-                VALUES ('pseudo', 'email', 'password')";
+        $sql = "INSERT INTO users ( email, password, pseudo)
+                VALUES ('email', 'password', 'pseudo')";
         $pdo->query($sql);
     }
 
@@ -26,20 +26,20 @@ class User
         return $query->fetch();
     }
 
-    public static function updateProfile(PDO $pdo, int $id, string $pseudo, string $email, ?string $password = null)
+    public static function updateProfile(PDO $pdo, int $id, string $email, ?string $password = null, string $pseudo)
 {
     if ($password) {
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         $sql = "UPDATE users 
-                SET pseudo = :pseudo, email = :email, password = :password
+                SET  email = :email, password = :password, pseudo = :pseudo
                 WHERE id = :id";
 
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
-            'pseudo' => $pseudo,
             'email' => $email,
             'password' => $hashedPassword,
+            'pseudo' => $pseudo,
             'id' => $id
         ]);
     } else {

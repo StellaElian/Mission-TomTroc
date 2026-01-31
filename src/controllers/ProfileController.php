@@ -23,9 +23,9 @@ class ProfileController
         if(!EMPTY($_POST)){
             User::createUser(
                 $pdo,
-                $_POST['pseudo'],
                 $_POST['email'],
-                $_POST['password']
+                $_POST['password'],
+                $_POST['pseudo']
             );
             require_once '../src/views/register.php';
         }
