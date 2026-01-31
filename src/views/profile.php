@@ -11,23 +11,23 @@
             <img src="<?= $user['avatar'] ?? 'default-avatar.png' ?>" alt="Avatar" class="profile-avatar">
             <a href="index.php?page=profile&edit=true" class="profile-edit">modifier</a>
             <h2><?= $user['pseudo'] ?></h2>
-            <p>Membre depuis : <?= $user['created_at'] ?></p>
+            <p>Membre depuis : <?= $user['created_at'] ?></p><br><br><br>
+
+            <p>Bibliothèque</p>
         
         </div>
 
         <div class="profile-right">
             <h3>Vos informations personnelles</h3>
             <form method="post" action="index.php?page=profile">
-                <label for="email">Email :</label>
-                <input type="email" name="email" id="email" value="<?= $user['email'] ?>">
+                <label for="email">Adresse email :</label><br>
+                <input type="email" name="email" id="email" value="<?= $user['email'] ?>"><br><br>
 
-                <label for="pseudo">Pseudo :</label>
-                <input type="text" name="pseudo" id="pseudo" value="<?= $user['pseudo'] ?>">
+                <label for="pseudo">Pseudo :</label><br>
+                <input type="text" name="pseudo" id="pseudo" value="<?= $user['pseudo'] ?>"><br><br>
 
-                <label for="password">Mot de passe :</label>
-                <input type="password" name="password" id="password">
-
-                <p>Bibliothèque</p>
+                <label for="password">Mot de passe :</label><br>
+                <input type="password" name="password" id="password"><br><br>
 
                 <button type="submit">Enregistrer</button>
             </form>
