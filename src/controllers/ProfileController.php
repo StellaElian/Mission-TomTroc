@@ -6,6 +6,16 @@ class ProfileController
 {
     public function show($pdo){
         $user = User::getOneProfile($pdo);
+        if(!empty($_POST)){
+            User::updateProfile(
+                $pdo,
+                $user['id'],
+                $_POST['email'],
+                $_POST['password']?: null,
+                $_POST['pseudo']
+            );
+            User::getOneProfile($pdo);
+        }
         require_once '../src/views/profile.php'; 
     }
 

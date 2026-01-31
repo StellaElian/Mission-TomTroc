@@ -25,4 +25,34 @@ class User
         $query = $pdo->query("SELECT pseudo, email, created_at FROM users LIMIT 1");
         return $query->fetch();
     }
+
+    public static function updateProfile(PDO $pdo, int $id, string $pseudo, string $email, ?string $password = null)
+{
+    if ($password) {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        $sql = "UPDATE users 
+                SET pseudo = :pseudo, email = :email, password = :password
+                WHERE id = :id";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            'pseudo' => $pseudo,
+            'email' => $email,
+            'password' => $hashedPassword,
+            'id' => $id
+        ]);
+    } else {
+        $sql = "UPDATE users 
+                SET pseudo = :pseudo, email = :email
+                WHERE id = :id";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            'pseudo' => $pseudo,
+            'email' => $email,
+            'id' => $id
+        ]);
+    }
+}
 }
