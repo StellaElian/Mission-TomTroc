@@ -16,7 +16,7 @@ if(isset($_GET['page']) && $_GET['page'] === 'register'){
     $loginController->showForm();
     $loginController->login($pdo);
 }else{
-    //page utilisateur
+    //page profil
     require_once "../src/controllers/ProfileController.php";
     $profileController = new ProfileController();
     $profileController->show($pdo);
