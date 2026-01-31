@@ -3,7 +3,7 @@
 session_start();
 
 // Ici on met les constantes utiles et tout ce qui sert à configurer. 
-define('TEMPLATE_VIEW_PATH', '../templates/'); // Le chemin vers les templates de vues.
+define('TEMPLATE_VIEW_PATH', '../views/'); // Le chemin vers les templates de vues.
 define('MAIN_VIEW_PATH', TEMPLATE_VIEW_PATH . 'main.php'); // Le chemin vers le template principal.
 // les données de connexions à la bdd
 define('DB_HOST', 'localhost');

@@ -4,10 +4,6 @@
 //et affiches le a ligne du résultat de la requête
 class User
 {
-    public static function getOneUser($pdo){
-        $query = $pdo->query("SELECT pseudo, email FROM users LIMIT 1");
-        return $query->fetch();
-    }
     // enregistrer un utilisateur 
     public static function createUser($pdo, $pseudo, $email, $password){
         $sql = "INSERT INTO users (pseudo, email, password)
@@ -23,5 +19,10 @@ class User
         }else{
             return false;
         }
+    }
+
+    public static function getOneProfile($pdo){
+        $query = $pdo->query("SELECT pseudo, email FROM users LIMIT 1");
+        return $query->fetch();
     }
 }

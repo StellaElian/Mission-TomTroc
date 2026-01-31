@@ -2,11 +2,11 @@
 //Demande au modéle et l'envoie à la vue 
 require_once "../src/models/User.php";
 
-class UserController
+class ProfileController
 {
     public function show($pdo){
-        $user = User::getOneUser($pdo);
-        require_once '../src/views/user.php'; // car $user existe maintenant 
+        $profile = User::getOneProfile($pdo);
+        require_once '../src/views/profile.php'; // car $user existe maintenant 
     }
 
     public function register($pdo){

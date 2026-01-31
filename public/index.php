@@ -15,9 +15,9 @@ if(isset($_GET['page']) && $_GET['page'] === 'register'){
     $loginController = new LoginController();
     $loginController->showForm();
     $loginController->login($pdo);
-}/*else{
+}else{
     //page utilisateur
-    require_once "../src/controllers:UserController.php";
-    $userController = new UserController();
-    $userController->show($pdo);
-}*/
+    require_once "../src/controllers/ProfileController.php";
+    $profileController = new ProfileController();
+    $profileController->show($pdo);
+}
