@@ -26,7 +26,7 @@ class User
         return $query->fetch();
     }
 
-    public static function updateProfile(PDO $pdo, int $id, string $email, ?string $password = null, string $pseudo)
+    public static function updateProfile(PDO $pdo, int $id, string $pseudo, string $email, ?string $password = null)
 {
     if ($password) {
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
