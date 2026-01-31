@@ -3,7 +3,7 @@
 // database.php retourne $pdo ainsi on le récupère ici 
 $pdo = require_once '../config/database.php'; 
 
-$page = $_GET['page'] ?? 'user';
+$page = $_GET['page'] ?? 'profile';
 
 //isset verifie si une information existe 
 if(isset($_GET['page']) && $_GET['page'] === 'register'){
@@ -15,9 +15,11 @@ if(isset($_GET['page']) && $_GET['page'] === 'register'){
     $loginController = new LoginController();
     $loginController->showForm();
     $loginController->login($pdo);
-}else{
+}elseif ($page === 'profile'){
     //page profil
     require_once "../src/controllers/ProfileController.php";
     $profileController = new ProfileController();
     $profileController->show($pdo);
+}else{
+    echo "Page introuvable";
 }

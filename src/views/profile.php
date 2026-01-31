@@ -7,6 +7,6 @@
     <body>
         <h1>Mon compte</h1><br>
         <p>Pseudo : <?= $user['pseudo']; ?></p>
-        <p>Email : <?= $use['email']; ?></p>
+        <p>Email : <?= $user['email']; ?></p>
     </body>
 </html>

@@ -5,8 +5,8 @@ require_once "../src/models/User.php";
 class ProfileController
 {
     public function show($pdo){
-        $profile = User::getOneProfile($pdo);
-        require_once '../src/views/profile.php'; // car $user existe maintenant 
+        $user = User::getOneProfile($pdo);
+        require_once '../src/views/profile.php'; 
     }
 
     public function register($pdo){
