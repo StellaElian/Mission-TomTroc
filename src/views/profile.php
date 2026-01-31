@@ -8,7 +8,7 @@
         <h1>Mon compte</h1><br>
         <div class="profile-main">
             <div class="profile-left">
-            <img src="<?= $user['avatar'] ?? 'default-avatar.png' ?>" alt="Avatar" class="profile-avatar">
+            <img src="<?= $user['avatar'] ?? 'default-avatar.png' ?>" alt="Avatar" class="profile-avatar"><br><br>
             <a href="index.php?page=profile&edit=true" class="profile-edit">modifier</a>
             <h2><?= $user['pseudo'] ?></h2>
             <p>Membre depuis : <?= $user['created_at'] ?></p><br><br><br>
