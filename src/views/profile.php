@@ -13,22 +13,23 @@
             <h2><?= $user['pseudo'] ?></h2>
             <p>Membre depuis : <?= $user['created_at'] ?></p><br><br><br>
 
-            <p>Bibliothèque</p>
+            <p>BIBLIOTHEQUE</p>
         
         </div>
 
         <div class="profile-right">
             <h3>Vos informations personnelles</h3>
             <form method="post" action="index.php?page=profile">
-                <label for="email">Adresse email :</label><br>
+                <label for="email">Adresse email </label><br>
                 <input type="email" name="email" id="email" value="<?= $user['email'] ?>"><br><br>
 
-                <label for="pseudo">Pseudo :</label><br>
-                <input type="text" name="pseudo" id="pseudo" value="<?= $user['pseudo'] ?>"><br><br>
-
-                <label for="password">Mot de passe :</label><br>
+                <label for="password">Mot de passe </label><br>
                 <input type="password" name="password" id="password"><br><br>
 
+                <label for="pseudo">Pseudo </label><br>
+                <input type="text" name="pseudo" id="pseudo" value="<?= $user['pseudo'] ?>"><br><br>
+
+               
                 <button type="submit">Enregistrer</button>
             </form>
         </div>
