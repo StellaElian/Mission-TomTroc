@@ -9,7 +9,10 @@ class LoginController
         if (!empty($_POST['pseudo']) && !empty($_POST['password'])){
             $user = User::login($pdo, $_POST['pseudo'], $_POST['password']);
             if($user){
-                echo "Bienvenue " . $user['pseudo'];
+                //mémoriser l'utilisateur
+                $_SESSION['user_id'] = $user['id'];
+                header('Location: index.php?page=profile');
+                exit;
             }else{
                 echo "Pseudo ou Mot de passe incorect ";
             }

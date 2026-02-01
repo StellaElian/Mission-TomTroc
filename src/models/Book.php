@@ -19,7 +19,7 @@ class Book
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function createBook(PDO $pdo, string $title, string $author, string $description, string $disponibilite, string $image){
+    public static function createBook(PDO $pdo, string $title, string $author, string $description, string $disponibilite, string $image, int $userId){
         $sql = "INSERT INTO books (title, author, description, image, user_id, disponibilite) VALUES (:title, :author, :description, :image, :user_id, :disponibilite)";
         $statement = $pdo->prepare($sql);
         $statement->execute([
@@ -27,7 +27,7 @@ class Book
             'author' => $author,
             'description' => $description,
             'image' => $image,
-            'user_id' => $userid,
+            'user_id' => $userId,
             'disponibilte' => $disponibilite
         ]);
     }
