@@ -21,7 +21,7 @@
                     <?php foreach($books as $book): ?>
                         <tr>
                             <td>
-                                <img src="img/Books/<?= $book['image'] ?? 'default-book.png' ?>" width="60">
+                                <img src="public/img/books/<?= $book['image'] ?? 'default-book.png' ?>" width="60">
                             </td>
                             <td><?= htmlspecialchars($book['title']) ?></td>
                             <td><?= htmlspecialchars($book['author']) ?></td>
