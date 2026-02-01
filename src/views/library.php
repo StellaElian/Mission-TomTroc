@@ -23,9 +23,9 @@
                             <td>
                                 <img src="img/Books/<?= $book['image'] ?? 'default-book.png' ?>" width="60">
                             </td>
-                            <td><?= htmlspecialchars($book{'title'}) ?></td>
-                            <td><?= htmlspecialchars($book{'author'}) ?></td>
-                            <td><?= htmlspecialchars($book{'description'}) ?></td>
+                            <td><?= htmlspecialchars($book['title']) ?></td>
+                            <td><?= htmlspecialchars($book['author']) ?></td>
+                            <td><?= htmlspecialchars($book['description']) ?></td>
                             <td>
                                 <a href="index.php?page=edit-book&id=<?= $book['id'] ?>">Editer</a>
                                 <a href="index.php?page=delet-book&id=<?= $book['id'] ?>" class="delete">Supprimer</a>
