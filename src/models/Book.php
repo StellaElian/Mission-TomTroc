@@ -12,7 +12,7 @@ class Book
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
-    public static function getBooksByuser(PDO $pdo, int $userId): array{
+    public static function getBooksByUser(PDO $pdo, int $userId): array{
         $sql =  "SELECT * FROM books WHERE user_id = :user_id";
         $statement = $pdo->prepare($sql);
         $statement->execute(['user_id' => $userId]);
