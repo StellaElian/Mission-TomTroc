@@ -4,8 +4,10 @@ require_once "../src/models/User.php";
 
 class ProfileController
 {
-    public function show($pdo){
+    public function show(PDO $pdo){
         $user = User::getOneProfile($pdo);
+        // livre de cet utilisateur
+        $books = Book::getBooksByUser($pdo, $user['id']);
         if(!empty($_POST)){
             User::updateProfile(
                 $pdo,

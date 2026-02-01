@@ -12,6 +12,13 @@ class Book
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
+    public static function getBooksByuser(PDO $pdo, int $userId): array{
+        $sql =  "SELECT * FROM books WHERE user_id = :user_id";
+        $statement = $pdo->prepare($sql);
+        $statement->execute(['user_id' => $userId]);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public static function createBook(PDO $pdo, string $title, string $author, string $description, string $disponibilite, string $image){
         $sql = "INSERT INTO books (title, author, description, image, user_id, disponibilite) VALUES (:title, :author, :description, :image, :user_id, :disponibilite)";
         $statement = $pdo->prepare($sql);
