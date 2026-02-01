@@ -7,4 +7,10 @@ class BookController
         $books = Book::getAllBooks($pdo);
         require_once "../src/views/library.php";
     }
+
+    public function index(PDO $pdo){
+        // index: nom juste pour afficher la page principale de la librairie
+        $books = Book::getAllBooks($pdo);
+        require_once "../src/views/library.php";
+    }
 }

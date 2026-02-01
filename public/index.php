@@ -27,8 +27,8 @@ switch ($page){
         break;
 
     case 'library':
-        require_once "../src/controller/BookController.php";
-        $bookcontroller = new BookController();
+        require_once "../src/controllers/BookController.php";
+        $bookController = new BookController();
         $bookController->index($pdo);
         break;
 
