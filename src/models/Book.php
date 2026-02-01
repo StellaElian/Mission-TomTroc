@@ -27,7 +27,7 @@ class Book
 
     public static function deleteBook(PDO $pdo, int $id){
         $statement = $pdo->prepare("DELETE FROM books WHERE id = :id");
-        $statement->(['id' => $id]);
+        $statement->execute(['id' => $id]);
     }
 
     public static function updateBook(PDO $pdo, int $id, string $title, string $author, string $description, string $image, string $disponibilite){

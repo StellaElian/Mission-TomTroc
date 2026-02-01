@@ -5,21 +5,32 @@ $pdo = require_once '../config/database.php';
 
 $page = $_GET['page'] ?? 'profile';
 
-//isset verifie si une information existe 
-if(isset($_GET['page']) && $_GET['page'] === 'register'){
-    require_once "../src/controllers/RegisterController.php";
-    $registercontroller = new RegisterController();
-    $registercontroller->showform();
-}elseif(isset($_GET['page']) && $_GET['page'] === 'login'){
-    require_once "../src/controllers/LoginController.php";
-    $loginController = new LoginController();
-    $loginController->showForm();
-    $loginController->login($pdo);
-}elseif ($page === 'profile'){
-    //page profil
-    require_once "../src/controllers/ProfileController.php";
-    $profileController = new ProfileController();
-    $profileController->show($pdo);
-}else{
-    echo "Page introuvable";
+switch ($page){
+    case 'register':
+        require_once "../src/controllers/RegisterController.php";
+        $registercontroller = new RegisterController();
+        $registercontroller->showform();
+        break;
+    
+    case 'login':
+        require_once "../src/controllers/LoginController.php";
+        $loginController = new LoginController();
+        $loginController->showForm();
+        $loginController->login($pdo);
+        break;
+
+    case 'profile':
+        require_once "../src/controllers/ProfileController.php";
+        $profileController = new ProfileController();
+        $profileController->show($pdo);
+        break;
+
+    case 'library':
+        require_once "../src/controller/BookController.php";
+        $bookcontroller = new BookController();
+        $bookController->index($pdo);
+        break;
+
+    default:
+        echo "Page introuvable";
 }
