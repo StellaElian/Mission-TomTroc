@@ -1,5 +1,6 @@
 <?php 
 // rôle est d'appeler le controller 
+require_once "../config/_config.php";
 // database.php retourne $pdo ainsi on le récupère ici 
 $pdo = require_once '../config/database.php'; 
 

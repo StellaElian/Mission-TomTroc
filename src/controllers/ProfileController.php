@@ -8,7 +8,12 @@ class ProfileController
     public function show(PDO $pdo){
         $user = User::getOneProfile($pdo);
         // livre de cet utilisateur
-        $books = Book::getBooksByUser($pdo, $user['id']);
+        $userId = $_SESSION['user_id'];
+        if(!isset($_SESSION['user_id'])){
+            echo "Utilisateur non connecté";
+            exit;
+        }
+        $books = Book::getBooksByUser($pdo, $userId);
         if(!empty($_POST)){
             User::updateProfile(
                 $pdo,
