@@ -1,6 +1,7 @@
 <?php
 //Demande au modéle et l'envoie à la vue 
 require_once "../src/models/User.php";
+require_once "../src/models/Book.php";
 
 class ProfileController
 {
