@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <h3>BIBLIOTHEQUE</h3>
+        <h3>Nos livres à l'échange</h3>
         <?php if (!empty($books)): ?>
             <table class="library-table">
                 <thead>
