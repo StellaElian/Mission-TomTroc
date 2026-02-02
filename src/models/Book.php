@@ -1,45 +1,50 @@
 <?php 
 class Book
 {
-    public int $id;
-    public int $user_id;
-    public string $title;
-    public string $author;
-    public string $description; 
-
-    
-    public static function getAllBooks(PDO $pdo){
+    public static function getAllBooks(PDO $pdo): array 
+    {
         $statement = $pdo->query("SELECT * FROM books ORDER BY id DESC");
         return $statement->fetchAll(PDO::FETCH_ASSOC); // récupère tout sous forme de tableau (chaque livre est un tableau avec ses colonnes)
     }
 
-    public static function getBookById(PDO $pdo, int $id){
+    public static function getBookById(PDO $pdo, int $id): array|false
+    {
         $statement = $pdo->prepare("SELECT * FROM books WHERE id = :id");
         $statement->execute(['id' => $id]);
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
-    public static function getBooksByUser(PDO $pdo, int $userId): array{
+    public static function getBooksByUser(PDO $pdo, int $userId): array
+    {
         $sql =  "SELECT * FROM books WHERE user_id = :user_id";
         $statement = $pdo->prepare($sql);
         $statement->execute(['user_id' => $userId]);
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function createBook(PDO $pdo, string $title, string $author, string $description, string $disponibilite, string $image, int $userId){
-        $sql = "INSERT INTO books (title, author, description, image, user_id, disponibilite) VALUES (:title, :author, :description, :image, :user_id, :disponibilite)";
+    public static function createBook(
+        PDO $pdo, 
+        string $title, 
+        string $author, 
+        string $description, 
+        string $disponibilite, 
+        string $image, 
+        int $userId
+        ):void {
+        $sql = "INSERT INTO books (title, author, description, image, disponibilite, user_id ) VALUES (:title, :author, :description, :image, :disponibilite, :user_id )";
         $statement = $pdo->prepare($sql);
         $statement->execute([
             'title' => $title,
             'author' => $author,
             'description' => $description,
             'image' => $image,
-            'user_id' => $userId,
-            'disponibilte' => $disponibilite
+            'disponibilte' => $disponibilite,
+            'user_id' => $userId
         ]);
     }
 
-    public static function deleteBook(PDO $pdo, int $id){
+    public static function deleteBook(PDO $pdo, int $id): void 
+    {
         $statement = $pdo->prepare("DELETE FROM books WHERE id = :id");
         $statement->execute(['id' => $id]);
     }

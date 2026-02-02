@@ -10,7 +10,7 @@ class User
     // enregistrer un utilisateur 
     public static function createUser($pdo, $pseudo, $email, $password){
         $sql = "INSERT INTO users (email, password, pseudo)
-                VALUES ('email', 'password', 'pseudo')";
+                VALUES (:email, :password, :pseudo)";
         $pdo->query($sql);
     }
 
