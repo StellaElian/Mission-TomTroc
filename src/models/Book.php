@@ -1,6 +1,13 @@
 <?php 
 class Book
 {
+    public int $id;
+    public int $user_id;
+    public string $title;
+    public string $author;
+    public string $description; 
+
+    
     public static function getAllBooks(PDO $pdo){
         $statement = $pdo->query("SELECT * FROM books ORDER BY id DESC");
         return $statement->fetchAll(PDO::FETCH_ASSOC); // récupère tout sous forme de tableau (chaque livre est un tableau avec ses colonnes)
