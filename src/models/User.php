@@ -60,7 +60,7 @@ class User
     
     public static function updateAvatar(PDO $pdo, int $id, string $avatar): void
     {
-        $stmt = $pdo->prepare("UPDATE users SET avatar = :avatar WHERE id = :id");
+        $stmt = $pdo->prepare("UPDATE users SET avatar = :avatar WHERE id = :id"); //SEt : quelle colonne on modifie et quelle valeur on affecte
         $stmt->execute([
             'avatar' => $avatar,
             'id' => $id
