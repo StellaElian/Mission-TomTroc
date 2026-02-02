@@ -43,18 +43,28 @@ class User
         string $email, 
         ?string $password
         ): void {
-    if ($password) {
-        $password = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "UPDATE users SET email = :email, password = :password, pseudo = :pseudo WHERE id = :id";
-    } else {
-        $sql = "UPDATE users SET pseudo = :pseudo, email = :email WHERE id = :id";
-
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([
+            if ($password) {
+            $password = password_hash($password, PASSWORD_DEFAULT);
+            $sql = "UPDATE users SET email = :email, password = :password, pseudo = :pseudo WHERE id = :id";
+            } else {
+                $sql = "UPDATE users SET pseudo = :pseudo, email = :email WHERE id = :id";
+            }
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([
             'email' => $email,
             'password' => $password,
             'pseudo' => $pseudo,
             'id' => $id
-        ]);}
+        ]);
+    }
+    
+    public static function updateAvatar(PDO $pdo, int $id, string $avatar): void
+    {
+        $stmt = $pdo->prepare("UPDATE users SET avatar = :avatar WHERE id = :id");
+        $stmt->execute([
+            'avatar' => $avatar,
+            'id' => $id
+        ]);
     }
 }
+
