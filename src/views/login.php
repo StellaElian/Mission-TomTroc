@@ -17,7 +17,7 @@
 
             <p>
                 Pas de compte ?
-                <a href="/Option_B_Mission/public/index.php?page=register" style="test-decoration: underline; color: black;">Inscrivez-vous</a>
+                <a href="index.php?page=register" style="test-decoration: underline; color: black;">Inscrivez-vous</a>
             </p>
 
         </form>
