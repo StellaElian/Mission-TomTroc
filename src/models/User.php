@@ -1,22 +1,27 @@
 <?php
-//Communque avec la base de connées 
-// envoies la requête de la base de données à sql et mets le dans l'objet query
-//et affiches le a ligne du résultat de la requête
+//Communique avec la base de connées 
+// envoies la requête de la base de données 
+
 class User
 {
-    public int $id;
-    public string $pseudo;
-    public ?string $avatar
     // enregistrer un utilisateur 
-    public static function createUser($pdo, $pseudo, $email, $password){
-        $sql = "INSERT INTO users (email, password, pseudo)
-                VALUES (:email, :password, :pseudo)";
-        $pdo->query($sql);
+    public static function createUser(PDO $pdo, string $pseudo, string $password, string $email): void
+    {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "INSERT INTO users (email, password, pseudo) VALUES (:email, :password, :pseudo)";
+        $statement = $pdo->prepare($sql);
+        $statement->execute([
+            'email' => $email,
+            'password' => $password,
+            'pseudo' => $pseudo
+        ]);
     }
 
-    public static function login($pdo, $pseudo, $password){
-        $query = $pdo->query("SELECT * FROM users WHERE pseudo = '$pseudo' LIMIT 1");
-        $user = $query->fetch();
+    public static function login(PDO $pdo, string $pseudo, string $password): array|false
+    {
+        $stmt= $pdo->prepare("SELECT * FROM users WHERE pseudo = :pseudo");
+        $stmt->execute(['pseudo' => $pseudo]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
         if($user && password_verify($password, $user['password'])){
             return $user;
         }else{
@@ -24,38 +29,32 @@ class User
         }
     }
 
-    public static function getOneProfile(PDO $pdo){
-        $query = $pdo->query("SELECT pseudo, email, created_at FROM users LIMIT 1");
-        return $query->fetch();
+    public static function getOneProfile(PDO $pdo, int $userId): array |false
+    {
+        $stmt = $pdo->prepare("SELECT pseudo, email, created_at FROM users LIMIT 1");
+        $stmt->execute(['id' => $userId]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public static function updateProfile(PDO $pdo, int $id, string $pseudo, string $email, ?string $password = null)
-{
+    public static function updateProfile(
+        PDO $pdo, 
+        int $id, 
+        string $pseudo, 
+        string $email, 
+        ?string $password
+        ): void {
     if ($password) {
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-        $sql = "UPDATE users 
-                SET  email = :email, password = :password, pseudo = :pseudo
-                WHERE id = :id";
-
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([
-            'email' => $email,
-            'password' => $hashedPassword,
-            'pseudo' => $pseudo,
-            'id' => $id
-        ]);
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "UPDATE users SET email = :email, password = :password, pseudo = :pseudo WHERE id = :id";
     } else {
-        $sql = "UPDATE users 
-                SET pseudo = :pseudo, email = :email
-                WHERE id = :id";
+        $sql = "UPDATE users SET pseudo = :pseudo, email = :email WHERE id = :id";
 
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
-            'pseudo' => $pseudo,
             'email' => $email,
+            'password' => $password,
+            'pseudo' => $pseudo,
             'id' => $id
-        ]);
+        ]);}
     }
-}
 }
