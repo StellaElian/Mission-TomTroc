@@ -1,5 +1,6 @@
 <?php
 require_once "../src/models/Book.php";
+
 class BookController
 {
     private PDO $db;
@@ -14,13 +15,12 @@ class BookController
         $statement = $this->db->prepare($sql);
         $statement->execute([
             'user_id' => $userId
-        ]);
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
-        require_once '../src/views/library.php';
+        ]); 
+        return $statement->fetchAll(PDO::FETCH_ASSOC); 
     }
-    public function index(PDO $pdo){
+    public function index(): array 
+    {
         // index: nom juste pour afficher la page principale de la librairie
-        $books = Book::getAllBooks($pdo);
-        require_once "../src/views/library.php";
+        return Book::getAllBooks($this->db);
     }
 }
